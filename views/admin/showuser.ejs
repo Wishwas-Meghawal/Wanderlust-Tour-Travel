@@ -1,0 +1,37 @@
+<% layout("/layouts/adminboilerplate") %>
+  <body>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <h1>All User</h1>
+
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">User Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Phone</th>
+                 
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let user of allUsers){ %>
+                <tr>
+                  <td><%= user.username %></td>
+                  <td><%= user.email %></td>
+                  <td><%= user.mobile %></td>
+                  
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+          <div class=" page-container mb-3 ">
+        </div>
+        </main>
+      </div>
+    </div>
+  </body>

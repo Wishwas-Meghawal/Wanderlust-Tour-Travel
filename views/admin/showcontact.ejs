@@ -1,0 +1,46 @@
+<% layout("/layouts/adminboilerplate") %>
+  <body>
+    
+    <div class="container-fluid">
+      <div class="row">
+        <main class="col-md-9 ms-sm-auto col-lg-10 px-md-4">
+          <h1>All Contact</h1>
+
+          <div class="table-responsive">
+            <table class="table table-striped table-sm">
+              <thead>
+                <tr>
+                  <th scope="col">User Name</th>
+                  <th scope="col">Email</th>
+                  <th scope="col">Message</th>
+                  <th scope="col" class="text-center">Action</th>
+
+                  
+                </tr>
+              </thead>
+              <tbody>
+                <% for(let contact of allContact){ %>
+                <tr>
+                  <td><%= contact.username %></td>
+                  <td><%= contact.useremail %></td>
+                  <td><%= contact.message %></td>
+                  <td>
+                    <div class="buttons">
+                      <form
+                        method="post"
+                        action="/admin/showcontact/<%= contact._id %>?_method=DELETE">
+                        <button class="btn btn-danger delete-btn">Delete</button>
+                      </form>
+                    </div>
+                  </td>
+                </tr>
+                <% } %>
+              </tbody>
+            </table>
+          </div>
+          <div class=" page-container mb-3 ">
+        </div>
+        </main>
+      </div>
+    </div>
+  </body>

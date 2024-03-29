@@ -1,0 +1,77 @@
+<% layout("/layouts/boilerplate") %>
+
+<body>
+    
+    <!-- nav bar -->
+    
+     
+    
+    
+        <!-- <div class="txt-toggle">
+            <div class="form-check-reverse form-switch txt-toggle-form">
+                <input class="form-check-input" type="checkbox" role="switch" id="flexSwitchCheckDefault">
+                <label class="form-check-label" for="flexSwitchCheckDefault">Display total after taxes</label>
+            </div>
+        </div> -->
+    
+        
+        <!-- <div class="navbar-nav me-auto">
+            <form class="d-flex" role="search">
+              <input class="form-control me-2 search-inp" type="search" name="search" placeholder="Search destinations">
+              <button class="btn search-btn" type="submit" value="search"><i class="fa-solid fa-magnifying-glass"></i>Search</button>
+            </form>
+        </div> -->
+
+    
+    
+    <div class="text-center wow fadeInUp" data-wow-delay="0.1s">
+        <h6 class="section-title bg-white text-center text-primary px-3">Packages</h6>
+        <h1 class="mb-5">Awesome Packages</h1>
+    </div>
+    <div class="row row-cols-lg-3 row-cols-md-3 row-cols-sm-1 mt-3">
+       
+        <% for(listing of allListing) {%>
+            <a href="/listings/<%= listing._id %>" class="listing-link">
+                <div class="card listing-card">
+                    <img src="<%= listing.image.url %>" class="card-img-top" alt="listing_image" style="height: 20rem;"/>
+                    <div class="card-img-overlay">
+                        <!-- <i class="fa-regular fa-heart" style="color: yellow;"></i> -->
+                    </div>
+                    <div class="card-body">
+                        <p class="card-text">
+                            <b><%= listing.title %></b> <br>
+                            <b>&#8377;<%= listing.price?.toLocaleString("en-IN")%>/Per Person</b>
+                            <!-- <i class="txt-info">&nbsp; &nbsp;+18% GST</i> -->
+                        </p>
+                    </div>
+                </div>
+            </a>
+        <% } %>
+    </div>
+    <div class=" page-container mb-3 ">
+        <% for(let j = 1; j<=totalPages; j++){ %>
+
+            <a href="?page=<%= j %>" class="page-btn btn btn-danger"><%= j %></a>
+    
+        <% } %>
+    </div>
+
+</body>
+
+<script>
+    const taxSwitch = document.getElementById("flexSwitchCheckDefault");
+    taxSwitch.addEventListener("click",()=>{
+        let txtInfo = document.getElementsByClassName("txt-info");
+        for(info of txtInfo)
+        {
+            if(info.style.display != "inline")
+            {
+                info.style.display = "inline";
+            }
+            else
+            {
+                info.style.display = "none"
+            } 
+        }
+    })
+</script>

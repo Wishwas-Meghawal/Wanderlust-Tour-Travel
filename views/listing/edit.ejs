@@ -1,0 +1,75 @@
+<% layout("/layouts/boilerplate") %>
+<body>
+  <div class="row">
+    <div class="col-8 offset-2">
+        <h1 class="mt-3 mb-3">Edit Package</h1>
+    <form method="POST" action="/listings/<%= listing._id %>?_method=PUT" novalidate class="needs-validation">
+      <div class="mb-3">
+        <label for="title" class="form-label">Title:</label>
+        <input
+          type="text"
+          name="listing[title]"
+          class="form-control"
+          value="<%= listing.title %>" required
+        >
+        <div class="invalid-feedback">
+          Please Enter  Title
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="description" class="form-label">Description:</label>
+        <textarea
+          name="listing[description]"
+          class="form-control" required
+        ><%= listing.description %></textarea>
+        <div class="invalid-feedback">
+          Please Enter  description
+        </div>
+      </div>
+      
+      <div class="row">
+        <div class="mb-3 col-md-4">
+          <label for="price" class="form-label">Price:</label>
+          <input
+            type="number"
+            name="listing[price]"
+            class="form-control"
+            value="<%=listing.price %>" required
+          />
+          <div class="invalid-feedback">
+            Please Enter  price
+          </div>
+        </div>
+
+        <div class="mb-3 col-md-8">
+          <label for="country" class="form-label">Country:</label>
+          <input
+            type="text"
+            name="listing[country]"
+            class="form-control"
+            value="<%=listing.country %>" required
+          />
+          <div class="invalid-feedback">
+            Please Enter  country
+          </div>
+        </div>
+      </div>
+
+      <div class="mb-3">
+        <label for="location" class="form-label">Location:</label>
+        <input
+          type="text"
+          name="listing[location]"
+          class="form-control"
+          value="<%=listing.location %>" required
+        />
+        <div class="invalid-feedback">
+          Please Enter  location
+        </div>
+      </div>
+      <button class="btn btn-dark mt-4 edit-btn">Edit</button>
+    </form>
+    </div>
+  </div>
+</body>

@@ -1,0 +1,85 @@
+<% layout("/layouts/boilerplate") %>
+<% let i%>
+
+<body>
+    
+    <div class="row">
+        <div class="col-8 offset-2">
+            <h1 class="mt-3 mb-3">BOOK TOUR</h1>
+            <form action="/listings" method="post" novalidate class="needs-validation">
+                <div class="mb-3">
+                    <label for="fullName" class="form-label">Name:</label>
+                    <input type="text" name="booking[fullName]" placeholder="Enter a FullName" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please Enter Your Name
+                    </div>
+                </div>
+
+                <div class="mb-3">
+                    <label for="userEmail" class="form-label">Email:</label>
+                    <input type="text" name="booking[userEmail]" placeholder="Enter a email" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please Enter  Email
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="userPhone" class="form-label">Phone:</label>
+                    <input type="number" name="booking[phone]" placeholder="Enter a Phone Number" class="form-control" required>
+                    <div class="invalid-feedback">
+                        Please Enter  Email
+                    </div>
+                </div>
+                <div class="row">
+                    
+                    <div class="mb-3  col-md-4 dropdown">
+                        <label for="guestSize" class="form-label">guestSize:</label>
+                        <select name="booking[guestSize]" id="guestSize" onchange="totalprice(this.value)" class="form-control" required>
+                            <% for(i=1;i<=10;i++){ %>
+                                <option value="<%= i %>"><%= i  %></option>
+                            <% } %>
+                        </select>
+                        <!-- <input  name="gest" placeholder="10"class="form-control" required> -->
+                    </div>
+
+                    <div class="mb-3  col-md-8">
+                        <label for="price" class="form-label">Price:</label>
+                        <input 
+                            type="number" name="booking[price]"
+                            id="price" 
+                            value = "<%= listing.price%>"
+                            class="form-control" readonly required>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="mb-3 col-md-4">
+                        <label for="location" class="form-label">Location:</label>
+                        <input type="text" name="booking[location]" placeholder="Ooty, Tamil Nadu" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please Enter Location
+                        </div>
+                    </div>
+                    
+                    <div class="mb-3 col-md-8">
+                        <label for="country" class="form-label">Country:</label>
+                        <input type="text" name="booking[country]" placeholder="India" class="form-control" required>
+                        <div class="invalid-feedback">
+                            Please Enter Country
+                        </div>
+                    </div>
+                </div>
+                <button class="btn btn-dark mt-4  add-btn">BOOK</button>
+            </form>
+        </div>
+        
+    </div>
+    
+</body>
+
+<script>
+    function totalprice(val){
+        let value = document.getElementById("price").value;
+        let total = val * value;
+        document.getElementById("price").value = total;
+    }
+</script>
